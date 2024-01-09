@@ -11,7 +11,6 @@ interface Event {
   online: boolean;
   location: string;
   imageUrl: string;
-  tags?: number[]; // Assume events have an array of tag IDs
 }
 
 interface EventListContainerProps {

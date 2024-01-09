@@ -16,7 +16,6 @@ interface Event {
   online: boolean;
   location: string;
   imageUrl: string;
-  tags?: number[];
 }
 
 const EventsListPage: React.FC = () => {

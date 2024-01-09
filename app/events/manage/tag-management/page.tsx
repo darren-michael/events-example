@@ -93,7 +93,7 @@ const TagManagementPage: React.FC = () => {
                 
                 <Form.Control
                   type="text"
-                  placeholder="Enter filter text"
+                  placeholder="Enter text to filter or add a new tag"
                   value={filterText}
                   onChange={(e) => setFilterText(e.target.value)}
                 />

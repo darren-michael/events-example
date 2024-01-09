@@ -33,6 +33,7 @@ const EventList: React.FC = () => {
   const [selectedTag, setSelectedTag] = useState<number | null>(null);
   const [locationFilter, setLocationFilter] = useState<string>('');
   const [currentMonth, setCurrentMonth] = useState<number>(new Date().getMonth());
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +53,7 @@ const EventList: React.FC = () => {
 
         const tagData = await tagResponse.json();
         setTags(tagData);
+        setLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -66,6 +68,7 @@ const EventList: React.FC = () => {
       url = `/api/server-handler?route=/events/by-tag/${tagId}`;
     }
     try {
+      setLoading(true)
       const eventResponse = await fetch(url);
       if (!eventResponse.ok) {
         throw new Error('Failed to fetch event data');
@@ -74,6 +77,7 @@ const EventList: React.FC = () => {
       const eventData = await eventResponse.json();
       setEvents(eventData);
       setSelectedTag(tagId);
+      setLoading(false)
     } catch (error) {
       console.error('Error fetching events by tag:', error);
     }
@@ -85,7 +89,7 @@ const EventList: React.FC = () => {
     // Add tab for all events
     tabs.push(
       <Tab key="all" eventKey="all" title="All Events">
-        <EventListContainer events={events} locationFilter={locationFilter} />
+        <EventListContainer loading={loading} events={events} locationFilter={locationFilter} />
       </Tab>
     );
 
@@ -99,6 +103,7 @@ const EventList: React.FC = () => {
       tabs.push(
         <Tab key={month} eventKey={month} title={monthName}>
           <EventListContainer
+            loading={loading}
             events={events.filter((event) => new Date(event.startDateTime).getMonth() + 1 === month)}
             locationFilter={locationFilter}
           />

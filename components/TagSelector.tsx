@@ -47,6 +47,7 @@ const TagSelector: React.FC<TagSelectorProps> = ({ eventId }) => {
     };
 
     fetchAllTags();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchEventTags();
   }, [eventId]);
 

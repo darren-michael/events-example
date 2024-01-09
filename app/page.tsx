@@ -21,7 +21,7 @@ export default function Home() {
         <Row>
           <Col>
             <Link href="/events">Events Calendar Example</Link>
-            <p>An example events calendar, with filters for Locations and tags.  Events can be added, edited etc. on the management page <Link href="/events/manage">management page</Link></p>
+            <p>An example events calendar, with filters for locations and tags.  Events can be added, edited etc. on the<Link href="/events/manage"> management page</Link></p>
           </Col>
         </Row>
       </Container>

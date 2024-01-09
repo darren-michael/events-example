@@ -46,7 +46,7 @@ const EventListContainer: React.FC<EventListContainerProps> = ({ events, locatio
         </Row>
       ) : (
         <Alert variant="warning">
-          Sorry, we couldn't find any results. Adjust your filters to try again.
+          Sorry, we couldn&apos;t find any results. Adjust your filters to try again.
         </Alert>
       )}
     </Container>
